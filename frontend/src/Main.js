@@ -43,7 +43,7 @@ export default function MainPage({ currentLocation }) {
     console.log("Submitting to AI:", inputText);
 
     try {
-      const response = await fetch("http://localhost:8000/generate-route", {
+      const response = await fetch("/api/generate-route", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ input_text: inputText })
@@ -76,7 +76,7 @@ export default function MainPage({ currentLocation }) {
     try {
       const API_KEY = process.env.REACT_APP_OPENWEATHER_API_KEY || '429786abfd1c8dc244cd9c6eecd024bc';
       const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${API_KEY}&units=metric`
+        `/api/weather?lat=${lat}&lon=${lng}`
       );
 
       if (response.ok) {
